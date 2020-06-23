@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="smart" translate="label" sortOrder="90">
+            <label>Smart</label>
+        </tab>
+        <section id="smart_loyalty" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Loyalty Point</label>
+            <tab>smart</tab>
+            <resource>Magento_Customer::config_customer</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0" >
+                    <label>Module Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group >
+            <group id="rule_type" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Rule type</label>
+                <field id="rule_type" translate="label" type="select" sortOrder="31" showInDefault="1" showInWebsite="1" showInStore="0" >
+                    <label>Rule type</label>
+                    <source_model>Smart\Loyalty\Model\Config\Source\ListRules</source_model>
+                </field>
+                <field id="point_to_earn" translate="label" type="text" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="0" >
+                    <label>Point To Be Earned</label>
+                    <validate>validate-number</validate>
+                    <depends>
+                        <field id="rule_type">1</field>
+                    </depends>
+                </field>
+                <field id="conversion_rate" translate="label" type="text" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="0" >
+                    <label>Conversion rate</label>
+                    <validate>validate-number</validate>
+                    <depends>
+                        <field id="rule_type">2</field>
+                    </depends>
+                </field>
+                <field id="point_step" translate="label" type="text" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="0" >
+                    <label>Point step</label>
+                    <validate>validate-number</validate>
+                    <depends>
+                        <field id="rule_type">3</field>
+                    </depends>
+                </field>
+                <field id="minimum_point" translate="label" type="text" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="0" >
+                    <label>Minimum Point</label>
+                    <validate>validate-number</validate>
+                    <depends>
+                        <field id="rule_type">3</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="promotion" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Promotion</label>
+                <field id="promotion_mode" translate="label" type="select" sortOrder="31" showInDefault="1" showInWebsite="1" showInStore="0" >
+                    <label>Promotion Mode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="promotion_fixed" translate="label" type="text" sortOrder="32" showInDefault="1" showInWebsite="0" showInStore="0" >
+                    <label>Promotion fixed</label>
+                    <validate>validate-number</validate>
+                </field>
+                <field id="start_date" translate="label" type="date" sortOrder="33" showInDefault="1" showInWebsite="1" showInStore="1" >
+                    <label>Start date</label>
+                    <frontend_model>Smart\Loyalty\Block\Adminhtml\System\Config\Date</frontend_model>
+                </field >
+                <field id="end_date" translate="label" type="date" sortOrder="34" showInDefault="1" showInWebsite="1" showInStore="1" >
+                    <label>End date</label>
+                    <frontend_model>Smart\Loyalty\Block\Adminhtml\System\Config\Date</frontend_model>
+                </field>
+            </group>
+        </section>
+
+    </system>
+</config>

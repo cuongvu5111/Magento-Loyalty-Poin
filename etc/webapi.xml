@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+
+    <!-- Managing mine Cart Coupons -->
+
+    <route url="/V1/loyalty-point/set-point/:pointUsed" method="PUT">
+        <service class="Smart\Loyalty\Api\LoyaltyPointInterface" method="set"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/loyalty-point/cancel-point" method="DELETE">
+        <service class="Smart\Loyalty\Api\LoyaltyPointInterface" method="remove"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+
+</routes>

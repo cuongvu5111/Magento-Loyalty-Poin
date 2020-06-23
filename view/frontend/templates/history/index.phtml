@@ -1,0 +1,30 @@
+<?php
+    $history = $block->getHistory();
+?>
+<div class="point-balance">
+    <p style="padding-bottom: 20px;border-bottom:1px solid #d1d1d1;"><b>Point Balance</b>: <?= $block->getLoyaltyPointBalance() ?></p>
+</div>
+<div class="table-wrapper orders-history">
+    <table class="data table table-order-items history" id="my-orders-table">
+        <caption class="table-caption"><?= /* @escapeNotVerified */ __('Orders') ?></caption>
+        <thead>
+        <tr>
+            <th scope="col" class="col id"><?= /* @escapeNotVerified */ __('Id #') ?></th>
+            <th scope="col" class="col date"><?= /* @escapeNotVerified */ __('Amount') ?></th>
+            <th scope="col" class="col shipping"><?= /* @escapeNotVerified */ __('Resource') ?></th>
+            <th scope="col" class="col total"><?= /* @escapeNotVerified */ __('Date') ?></th>
+        </tr>
+        </thead>
+        <tbody>
+            <?php foreach($history as $value): ?>
+            <tr>
+                <td class="col id"><?= $value['id']?></td>
+                <td class="col id"><?= $value['amount']?> point</td>
+                <td class="col id"><?= $value['resource']?></td>
+                <td class="col id"><?= $value['created_at']?></td>
+            </tr>
+            <?php endforeach;?>
+        </tbody>
+    </table>
+</div>
+

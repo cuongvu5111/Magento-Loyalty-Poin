@@ -1,0 +1,41 @@
+<?php
+
+$loyaltyPointBalance = $block->getLoyaltyPointBalance();
+$isApplyPoint = $block->isApplyPoint();
+?>
+<div class="block discount" id="block-discount" data-mage-init='{"collapsible":{"openedState": "active", "saveState": false}}'>
+    <div class="title" data-role="title">
+        <strong id="block-discount-heading" role="heading" aria-level="2"><?= /* @escapeNotVerified */ __('Apply Loyalty Point') ?></strong>
+    </div>
+
+    <div class="content" data-role="content" aria-labelledby="block-discount-heading">
+        <p><b><?= /* @escapeNotVerified */ __('Point Available') ?></b>: <span><?=$loyaltyPointBalance?></span></p>
+        <form action="<?= /* @escapeNotVerified */  $isApplyPoint ? $block->getUrl('loyalty/cart/cancelPoint') : $block->getUrl('loyalty/cart/applyPoint')?>" method="post" id="apply_point_form">
+            <div class="fieldset coupon">
+                <div class="field">
+                    <label for="coupon_code" class="label"><span><?= /* @escapeNotVerified */ __('Enter Loyalty Point') ?></span></label>
+                    <div class="control">
+                        <input type="text" class="input-text" id="point_used" value="<?= $isApplyPoint ? $block->getPointUsed() : "" ?>" name="point_used" <?= $isApplyPoint ? "disabled" : ""?> placeholder="Enter loyalty point"/>
+                    </div>
+                </div>
+                <?php if(!$isApplyPoint) : ?>
+                <div class="actions-toolbar">
+                        <div class="primary">
+                            <button class="action apply-point primary" type="submit" value="<?= /* @escapeNotVerified */ __('Apply Point') ?>" form="apply_point_form">
+                                <span><?= /* @escapeNotVerified */ __('Apply Point') ?></span>
+                            </button>
+                        </div>
+                </div>
+                <?php else : ?>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button class="action apply-point primary" type="submit" value="<?= /* @escapeNotVerified */ __('Apply Point') ?>" form="apply_point_form">
+                            <span><?= /* @escapeNotVerified */ __('Cancel Point') ?></span>
+                        </button>
+                    </div>
+                </div>
+                <?php endif; ?>
+            </div>
+        </form>
+    </div>
+</div>

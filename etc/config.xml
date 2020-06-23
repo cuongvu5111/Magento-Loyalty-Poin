@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <smart_loyalty>
+            <general>
+                <enable>1</enable>
+            </general>
+            <promotion>
+                <promotion_mode>0</promotion_mode>
+                <promotion_fixed>2</promotion_fixed>
+            </promotion>
+            <rule_type>
+                <rule_type>1</rule_type>
+                <point_to_earn>100</point_to_earn>
+                <conversion_rate>10</conversion_rate>
+                <point_step>1</point_step>
+                <minimum_point>100</minimum_point>
+            </rule_type>
+        </smart_loyalty>
+
+    </default>
+</config>

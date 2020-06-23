@@ -1,0 +1,57 @@
+
+<style>
+    .payment-option._collapsible.opc-payment-additional.discount-code {
+        margin: 10px 0;
+    }
+    span#block-discount-heading {
+        font-size: 16px;
+        font-weight: 600;
+    }
+    input#discount-code {
+        margin: 10px 0;
+    }
+</style>
+<div class="payment-option _collapsible opc-payment-additional discount-code"
+     data-bind="mageInit: {'collapsible':{'openedState': '_active'}}">
+    <div class="payment-option-title field choice" data-role="title">
+        <span class="action action-toggle" id="block-discount-heading" role="heading" aria-level="2">
+            <!-- ko i18n: 'Apply Loyalty Point'--><!-- /ko -->
+        </span>
+    </div>
+    <div class="payment-option-content" data-role="content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <form class="form form-loyalty-apply" id="loyalty-apply-form">
+            <div class="payment-option-inner">
+                <div class="field">
+                    <label class="label" for="point-used">
+<!--                        <span data-bind="i18n: 'Enter loyalty point'"></span>-->
+                    </label>
+                    <div class="control">
+                        <input class="input-text"
+                               type="text"
+                               id="point-used"
+                               name="point_used"
+                               data-validate="{'required-entry':true}"
+                               data-bind="value: pointUsed, attr:{disabled:isApplied() , placeholder: $t('Enter loyalty point')} " />
+                    </div>
+                </div>
+            </div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <!-- ko ifnot: isApplied() -->
+                    <button class="action action-apply-loyalty" type="submit" data-bind="'value': $t('Apply Loyalty Point'), click: apply">
+                        <span><!-- ko i18n: 'Apply Point'--><!-- /ko --></span>
+                    </button>
+                    <!-- /ko -->
+                    <!-- ko if: isApplied() -->
+                    <button class="action action-cancel" type="submit" data-bind="'value': $t('Cancel'), click: cancel">
+                        <span><!-- ko i18n: 'Cancel Point'--><!-- /ko --></span>
+                    </button>
+                    <!-- /ko -->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

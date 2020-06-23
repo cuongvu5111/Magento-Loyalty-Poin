@@ -1,0 +1,42 @@
+<?php
+
+$history = $block->getHistory();
+$point = $block->getPointBalance();
+?>
+
+<div class="point-balance" style="border-bottom:1px solid #d1d1d1;padding-bottom: 20px;">
+    <p style=""><b>Point Balance</b>: <?= $point ?></p>
+</div>
+
+<div class="table-wrapper orders-history">
+
+    <table class="data-grid" id="wishlistGrid_table">
+        <!-- Rendering column set -->
+        <thead>
+            <tr>
+                <th data-sort="product_name" data-direction="asc"
+                    class="data-grid-th _sortable not-sort col-name col-product_name"><span>Id #</span></th>
+                <th data-sort="description" data-direction="asc" class="data-grid-th _sortable not-sort  col-description">
+                    <span>Amount</span></th>
+                <th data-sort="qty" data-direction="asc" class="data-grid-th _sortable not-sort  col-qty">
+                    <span>Resource</span></th>
+                <th data-sort="store" data-direction="asc" class="data-grid-th _sortable not-sort  col-store"><span>Date</span>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($history as $value): ?>
+            <tr class="data-grid-tr-data even" data-role="row">
+                <td class=""><?= $value['id']?></td>
+                <td class=""><?= $value['amount']?></td>
+                <td class=""><?= $value['resource']?></td>
+                <td class=""><?= $value['created_at']?></td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+
+    </table>
+</div>
+
+

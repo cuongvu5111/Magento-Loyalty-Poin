@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="checkout.cart.container">
+            <referenceContainer name="cart.summary">
+                <block class="Smart\Loyalty\Block\Cart\LoyaltyPoint" name="loyalty.cart.loyaltypoint" as="loyaltypoint" template="cart/loyaltypoint_apply.phtml"/>
+                <referenceBlock name="checkout.cart.totals">
+                    <arguments>
+                        <argument name="jsLayout" xsi:type="array">
+                            <item name="components" xsi:type="array">
+                                <item name="block-totals" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="point_used" xsi:type="array">
+                                            <item name="component" xsi:type="string">Smart_Loyalty/js/view/checkout/summary/cart_loyalty_point</item>
+                                            <item name="sortOrder" xsi:type="string">40</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="template" xsi:type="string">Smart_Loyalty/checkout/summary/cart_loyalty_point</item>
+                                                <item name="title" xsi:type="string">Loyalty Point</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </referenceBlock>
+            </referenceContainer>
+            <container name="cart.discount" label="Cart Discount Container" htmlTag="div" htmlClass="cart-discount" after="-" />
+        </referenceContainer>
+        <move element="loyalty.cart.loyaltypoint" destination="cart.discount" />
+    </body>
+</page>

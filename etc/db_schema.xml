@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="smart_loyalty_history" resource="default" engine="innodb" comment="Smart Loyalty History">
+        <column xsi:type="int" name="id" padding="6" unsigned="false" nullable="false" identity="true"
+                comment="Id"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="History Creation Time"/>
+        <column xsi:type="int" name="amount" nullable="false"  comment="Amount"/>
+        <column xsi:type="int" name="customer_id" nullable="false"  comment="Customer id"/>
+        <column xsi:type="varchar" name="resource" nullable="false"  comment="Resource"/>
+
+        <index referenceId="LOYALTY_POINT_HISTORY_H_ID" indexType="btree">
+            <column name="id"/>
+        </index>
+    </table>
+    <table name="quote" resource="default" engine="innodb" comment="Quote">
+        <column xsi:type="int" name="point_used" nullable="false"  comment="Point Used"/>
+        <column xsi:type="int" name="point_earned" nullable="false"  comment="Point Earned"/>
+    </table>
+    <table name="sales_order" resource="default" engine="innodb" comment="Salses Order">
+        <column xsi:type="int" name="point_used" nullable="false"  comment="Point Used"/>
+        <column xsi:type="int" name="point_earned" nullable="false"  comment="Point Earned"/>
+    </table>
+
+</schema>
